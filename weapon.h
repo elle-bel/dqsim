@@ -7,6 +7,7 @@ class Weapon{
     int attack;
     public:
         int getAtk();
+        std::string getName();
         Weapon(std::string name, int attack);
 };
 
