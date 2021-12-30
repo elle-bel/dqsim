@@ -37,9 +37,10 @@ void Hero::changeStats(int hpup, int atkup, int defup, int spdup){
 }
 
 //add fluctuations in damage??
-void Hero::normalAttack(Enemy * e){
+int Hero::normalAttack(Enemy * e){
     int atkVal = attack + (attack * (equippedWeapon->getAtk() / 100));
-    e->getNormAttack(*this, atkVal);
+    int enemyHP = e->getNormAttack(*this, atkVal);
+    return enemyHP;
 }
 
 void Hero::equip(Weapon * w){

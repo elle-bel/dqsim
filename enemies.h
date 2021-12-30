@@ -12,7 +12,8 @@ class Enemy{
     int speed;
     public:
         Enemy(std::string name, int maxHP, int attack, int defense, int speed);
-        void getNormAttack(Hero &h, int atkVal);
+        int getNormAttack(Hero &h, int atkVal);
+        std::string getName();
 };
 
 #endif

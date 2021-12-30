@@ -7,7 +7,19 @@
 #include "enemies.h"
 using namespace std;
 
+void battleSeq(Hero *h, Enemy * e){
+    cout << "A " << e->getName() << " draws near!" << endl;
+    while(1){
+        int enemyHP = h->normalAttack(e);
+        if (enemyHP == 0){
+            cout << "The " << e->getName() << " is defeated!" << endl;
+            break;
+        }
+    }
+}
+
 // makefile works with "mingw32-make"
+// run dqsim.exe with ".\dqsim.exe"
 
 int main(){
     vector<Hero *> party;
@@ -25,5 +37,5 @@ int main(){
     Hero * curhero = party[0];
     curhero->equip(weapons[0]);
 
-    curhero->normalAttack(monsters[0]);
+    battleSeq(curhero, monsters[0]);
 }

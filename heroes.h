@@ -21,7 +21,7 @@ class Hero{
         ~Hero();
         virtual void levelUp() = 0;
         void changeStats(int hpup, int atkup, int defup, int spdup);
-        void normalAttack(Enemy * e);
+        int normalAttack(Enemy * e);
         std::string getName() const;
         int getLevel() const;
         std::vector<int> getStats() const;

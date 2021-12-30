@@ -5,12 +5,17 @@
 Enemy::Enemy(std::string name, int maxHP, int attack, int defense, int speed)
 : name{name}, maxHP{maxHP}, attack{attack}, defense{defense}, speed{speed} {}
 
-void Enemy::getNormAttack(Hero &h, int atkVal){
+int Enemy::getNormAttack(Hero &h, int atkVal){
     int dmgVal = atkVal - (atkVal * (defense / 100));
-    std::cout << h.getName() << " did " << dmgVal << " to " << name << "!" << std::endl;
+    std::cout << h.getName() << " did " << dmgVal << " damaga to " << name << "!" << std::endl;
     if (maxHP - dmgVal < 0){
         maxHP = 0;
     } else {
         maxHP -= dmgVal;
     }
+    return maxHP;
+}
+
+std::string Enemy::getName(){
+    return name;
 }
