@@ -13,7 +13,7 @@ Hero::~Hero(){
     delete equippedWeapon;
 }
 
-std::string Hero::getName() const{
+std::string Hero::getName() {
     return name;
 }
 
@@ -37,10 +37,21 @@ void Hero::changeStats(int hpup, int atkup, int defup, int spdup){
 }
 
 //add fluctuations in damage??
-int Hero::normalAttack(Enemy * e){
+int Hero::normalAttack(Entity * ent){
     int atkVal = attack + (attack * (equippedWeapon->getAtk() / 100));
-    int enemyHP = e->getNormAttack(*this, atkVal);
+    int enemyHP = ent->getNormAttack(*this, atkVal);
     return enemyHP;
+}
+
+int Hero::getNormAttack(Entity &ent, int atkVal){
+    int dmgVal = atkVal - (atkVal * (defense / 100));
+    std::cout << ent.getName() << " did " << dmgVal << " damage to " << name << std::endl; 
+    if (curHP - dmgVal < 0){
+        curHP = 0;
+    } else {
+        curHP -= dmgVal;
+    }
+    return curHP;
 }
 
 void Hero::equip(Weapon * w){

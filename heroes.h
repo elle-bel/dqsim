@@ -3,11 +3,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "entity.h"
 
 class Weapon;
 class Enemy;
 
-class Hero{
+class Hero: public Entity{
     std::string name;
     int level;
     int maxHP;
@@ -21,11 +22,12 @@ class Hero{
         ~Hero();
         virtual void levelUp() = 0;
         void changeStats(int hpup, int atkup, int defup, int spdup);
-        int normalAttack(Enemy * e);
-        std::string getName() const;
+        int normalAttack(Entity * ent) override;
+        std::string getName() override;
         int getLevel() const;
         std::vector<int> getStats() const;
         void equip(Weapon * w);
+        int getNormAttack(Entity &ent, int atkVal) override;
 };
         
 

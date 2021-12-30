@@ -7,12 +7,30 @@
 #include "enemies.h"
 using namespace std;
 
-void battleSeq(Hero *h, Enemy * e){
+void battleSeq(Hero *h, Enemy * e){ //currently not based on speed and only works for 1 hero, 1 enemy
     cout << "A " << e->getName() << " draws near!" << endl;
+    /*
+    vector<Entity *> order;
+    if (h->getStats()[2] > e->getStats()[2]){
+        order.emplace_back(h);
+        order.emplace_back(e);
+    } else {
+        order.emplace_back(e);
+        order.emplace_back(h);
+    }
+
+    int orderMax = order.size() - 1;
+    */
     while(1){
+         
         int enemyHP = h->normalAttack(e);
         if (enemyHP == 0){
             cout << "The " << e->getName() << " is defeated!" << endl;
+            break;
+        }
+        int heroHP = e->normalAttack(h);
+        if (heroHP == 0){
+            cout << "The party was wiped out!" << endl;
             break;
         }
     }

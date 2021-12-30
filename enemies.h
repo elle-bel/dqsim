@@ -1,10 +1,12 @@
 #ifndef _MYENEMIES_H_
 #define _MYENEMIES_H_
 #include <string>
+#include <vector>
+#include "entity.h"
 
 class Hero;
 
-class Enemy{
+class Enemy: public Entity{
     std::string name;
     int maxHP;
     int attack;
@@ -12,8 +14,10 @@ class Enemy{
     int speed;
     public:
         Enemy(std::string name, int maxHP, int attack, int defense, int speed);
-        int getNormAttack(Hero &h, int atkVal);
-        std::string getName();
+        int getNormAttack(Entity & ent, int atkVal) override;
+        std::string getName() override;
+        int normalAttack(Entity * ent) override;
+        std::vector<int> getStats();
 };
 
 #endif
