@@ -7,7 +7,7 @@ Enemy::Enemy(std::string name, int maxHP, int attack, int defense, int speed)
 
 int Enemy::getNormAttack(Hero &h, int atkVal){
     int dmgVal = atkVal - (atkVal * (defense / 100));
-    std::cout << h.getName() << " did " << dmgVal << " damaga to " << name << "!" << std::endl;
+    std::cout << h.getName() << " did " << dmgVal << " damage to " << name << "!" << std::endl;
     if (maxHP - dmgVal < 0){
         maxHP = 0;
     } else {
