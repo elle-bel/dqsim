@@ -16,8 +16,8 @@ class Enemy: public Entity{
         Enemy(std::string name, int maxHP, int attack, int defense, int speed);
         int getNormAttack(Entity & ent, int atkVal) override;
         std::string getName() override;
-        int normalAttack(Entity * ent) override;
-        std::vector<int> getStats();
+        int normalAttack(std::vector<Entity *> ent) override;
+        std::vector<int> getStats() override;
 };
 
 #endif

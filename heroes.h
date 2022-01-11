@@ -22,10 +22,10 @@ class Hero: public Entity{
         ~Hero();
         virtual void levelUp() = 0;
         void changeStats(int hpup, int atkup, int defup, int spdup);
-        int normalAttack(Entity * ent) override;
+        int normalAttack(std::vector<Entity *> ent) override;
         std::string getName() override;
-        int getLevel() const;
-        std::vector<int> getStats() const;
+        int getLevel();
+        std::vector<int> getStats() override;
         void equip(Weapon * w);
         int getNormAttack(Entity &ent, int atkVal) override;
 };
