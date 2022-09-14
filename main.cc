@@ -9,6 +9,7 @@
 using namespace std;
 
 int partition(vector<Entity *> &ent, int low, int high){
+    //pivot is the last element
     int pivot = ent[high]->getStats()[2];
     int i = low - 1;
     for (int j = low; j <= high - 1; j++){
@@ -21,6 +22,7 @@ int partition(vector<Entity *> &ent, int low, int high){
     return (i+1);
 }
 
+// using quickSort
 void sortSpeed(vector<Entity *> &ent, int low, int high){
     if (low < high){
         int pivot = partition(ent, low, high);
@@ -37,8 +39,7 @@ void battleSeq(vector<Entity *> h, vector<Entity *> e){
         cout << "A " << e[0]->getName() << " draws near!" << endl;
     }
     vector<Entity *> tempbattle = h;
-    vector<Entity *> tempe = e;
-    tempbattle.insert(tempbattle.end(), tempe.begin(), tempe.end());
+    tempbattle.insert(tempbattle.end(), e.begin(), e.end());
     sortSpeed(tempbattle, 0, tempbattle.size() - 1);
 
     int maxind = tempbattle.size() - 1;
@@ -47,6 +48,7 @@ void battleSeq(vector<Entity *> h, vector<Entity *> e){
     int partyCount = h.size();
     while(1){
         int entHP;
+        //determines if the entity going first is a hero or an enemy
         if (count(h.begin(), h.end(), tempbattle[counter]) > 0){
             entHP = tempbattle[counter]->normalAttack(e);
         } else {
@@ -79,6 +81,7 @@ void battleSeq(vector<Entity *> h, vector<Entity *> e){
 
 
 // makefile works with "mingw32-make"
+// clean via "mingw32-make clean"
 // run dqsim.exe with ".\dqsim.exe"
 
 int main(){

@@ -10,6 +10,8 @@ class Entity{
     virtual int getNormAttack(Entity & ent, int atkVal) = 0;
     virtual std::vector<int> getStats() = 0;
     virtual ~Entity() {};
+    virtual int cast(std::vector<Entity *> ent) = 0;
+    virtual int getFixedAtk(int atk) = 0;
 };
 
 

@@ -18,6 +18,8 @@ class Enemy: public Entity{
         std::string getName() override;
         int normalAttack(std::vector<Entity *> ent) override;
         std::vector<int> getStats() override;
+        int cast(std::vector<Entity *> ent);
+        int getFixedAtk(int atk) override;
 };
 
 #endif

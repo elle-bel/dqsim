@@ -34,3 +34,8 @@ std::vector<int> Enemy::getStats(){
     std::vector<int> stats = {attack, defense, speed, maxHP};
     return stats;
 }
+
+int Enemy::getFixedAtk(int atk){
+    maxHP -= atk;
+    return maxHP;
+}
